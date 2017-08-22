@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Animated, Text } from 'react-native';
+import { View, Animated, Easing, Text } from 'react-native';
 
 export default class SlideView extends Component {
     state = {
@@ -9,7 +9,8 @@ export default class SlideView extends Component {
     componentDidMount() {
         Animated.timing(this.state.slideAnim, {
             toValue: 0,
-            duration: 1000
+            duration: 2000,
+            easing: Easing.bounce
         }).start();
     }
 
