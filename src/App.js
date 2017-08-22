@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+
 import FadeView from './FadeView';
+import SlideView from './SlideView'
 
 export default class App extends Component {
     render() {
@@ -11,7 +13,7 @@ export default class App extends Component {
                 alignItems: 'center',
                 backgroundColor: 'lightblue'
             }}>
-                <FadeView />
+                <SlideView />
             </View>
         )
     }
