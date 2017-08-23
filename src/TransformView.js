@@ -1,0 +1,39 @@
+import React, { Component } from 'react';
+import { View, Animated, Easing, Text } from 'react-native';
+
+export default class TransformView extends Component {
+    state = {
+        bgcAnim: new Animated.Value(0),
+    }
+
+    componentDidMount() {
+        Animated.timing(
+            this.state.bgcAnim,
+            {
+                toValue: 1,
+                duration: 1000
+            }
+        ).start();
+    }
+
+    render() {
+        const backgroundColor = this.state.bgcAnim.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['blue', 'red']
+        });
+
+        return (
+            <View>
+                <Animated.View
+                    style={{
+                        width: 300,
+                        height: 150,
+                        backgroundColor
+                    }}
+                >
+                    <Text>I'm DHL</Text>
+                </Animated.View>
+            </View>
+        );
+    }
+}
