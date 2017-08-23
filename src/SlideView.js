@@ -3,20 +3,21 @@ import { View, Animated, Easing, Text } from 'react-native';
 
 export default class SlideView extends Component {
     state = {
-        slideAnim: new Animated.Value(-1000)
+        transformAnim: new Animated.Value(0)
     }
 
     componentDidMount() {
-        Animated.timing(this.state.slideAnim, {
-            toValue: 0,
-            duration: 2000,
-            easing: Easing.bounce
+        Animated.timing(this.state.transformAnim, {
+            toValue: 1,
+            duration: 1000
         }).start();
     }
 
     render() {
-        const marginLeft = this.state.slideAnim;
-        console.log(marginLeft);
+        const rotate = this.state.transformAnim.interpolate({
+            inputRange: [0, 0.5, 1],
+            outputRange: ['0deg', '60deg', '120deg']
+        })
 
         return (
             <Animated.View
@@ -24,7 +25,7 @@ export default class SlideView extends Component {
                     width: 300,
                     height: 200,
                     backgroundColor: 'green',
-                    marginLeft
+                    transform: [{ rotateZ: rotate }]
                 }}
             >
                 <Text>I'm DHL</Text>
