@@ -7,13 +7,22 @@ export default class TransformView extends Component {
     }
 
     componentDidMount() {
-        Animated.timing(
+        const anim1 = Animated.timing(
             this.state.bgcAnim,
             {
                 toValue: 1,
                 duration: 1000
             }
-        ).start();
+        );
+        const anim2 = Animated.timing(
+            this.state.bgcAnim,
+            {
+                toValue: 0,
+                duration: 1000
+            }
+        )
+        const composedAnim =  Animated.sequence([anim1, anim2]);
+        Animated.loop(composedAnim).start();
     }
 
     render() {
