@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 import FadeView from './FadeView';
-import SlideView from './SlideView'
+import ResponseView from './ResponseView'
 
 export default class App extends Component {
     render() {
@@ -10,10 +10,10 @@ export default class App extends Component {
             <View style={{
                 flex: 1,
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: 'stretch',
                 backgroundColor: 'lightblue'
             }}>
-                <SlideView />
+                <ResponseView />
             </View>
         )
     }
