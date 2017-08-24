@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
-import FadeView from './FadeView';
-import ResponseView from './ResponseView'
+import VegetablesView from './VegetablesView'
 
 export default class App extends Component {
     render() {
@@ -13,7 +12,7 @@ export default class App extends Component {
                 alignItems: 'stretch',
                 backgroundColor: 'lightblue'
             }}>
-                <ResponseView />
+                <VegetablesView />
             </View>
         )
     }
