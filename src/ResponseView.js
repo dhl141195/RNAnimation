@@ -5,7 +5,9 @@ import { View, Animated, Easing, Text } from 'react-native';
 export default class SlideView extends Component {
     state = {
         x: null,
-        y: null
+        y: null,
+        marginLeft: new Animated.Value(0),
+        marginTop: new Animated.Value(0)
     }
 
     onPress = (event) => {
@@ -16,17 +18,27 @@ export default class SlideView extends Component {
             x: locationX,
             y: locationY
         })
+
     }
 
     onMove = (event) => {
+        const { locationX, locationY } = event.nativeEvent;
+        const { x, y } = this.state;
 
+        const marginLeft = locationX - x;
+        const marginTop = locationY - y;
+
+        this.setState({
+            marginLeft,
+            marginTop
+        })
     }
 
     onRelease = (event) => {
-
     }
 
     render() {
+        const { marginLeft, marginTop } = this.state;
 
         return (
             <View
@@ -40,6 +52,15 @@ export default class SlideView extends Component {
                     backgroundColor: 'yellow'
                 }}
             >
+                <Animated.Image
+                    style={{
+                        height: 200,
+                        width: 200,
+                        marginLeft,
+                        marginTop
+                    }}
+                    source={require('./media/test.jpg')}
+                />
             </View>
         );
     }
