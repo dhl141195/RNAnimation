@@ -8,10 +8,12 @@ import h3 from './media/3.jpg';
 import h4 from './media/4.jpg';
 import h5 from './media/5.jpg';
 
+const imgArr = [h1, h2, h3, h4, h5];
 const { width } = Dimensions.get('window');
 
 export default class VegetablesView extends Component {
     state = {
+        index: 0,
         x: null,
         rotate: new Animated.Value(0)
     }
@@ -30,6 +32,23 @@ export default class VegetablesView extends Component {
         const { x } = this.state;
 
         const deg = 1.8 * (locationX - x) / width;
+
+        if (deg >= 1) {
+            this.setState({
+                index: this.state.index + 1,
+                x: locationX,
+                rotate: new Animated.Value(0)
+            })
+        }
+
+        if (deg <= -1) {
+            this.setState({
+                index: this.state.index - 1,
+                x: locationX,
+                rotate: new Animated.Value(0)
+            })
+        }
+
         this.setState({
             rotate: new Animated.Value(deg)
         });
@@ -79,7 +98,7 @@ export default class VegetablesView extends Component {
                         transform: [{ rotate }],
                         opacity
                     }}
-                    source={h1}
+                    source={imgArr[this.state.index]}
                 />
             </View>
         );
