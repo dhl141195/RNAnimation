@@ -29,12 +29,31 @@ export default class SlideView extends Component {
         const marginTop = locationY - y;
 
         this.setState({
-            marginLeft,
-            marginTop
+            marginLeft: new Animated.Value(marginLeft),
+            marginTop: new Animated.Value(marginTop)
         })
     }
 
     onRelease = (event) => {
+        const anim1 = Animated.timing(
+            this.state.marginLeft,
+            {
+                toValue: 0,
+                duration: 500,
+                easing: Easing.bounce
+            }
+        );
+
+        const anim2 = Animated.timing(
+            this.state.marginTop,
+            {
+                toValue: 0,
+                duration: 500,
+                easing: Easing.bounce
+            }
+        );
+
+        Animated.parallel([anim1, anim2]).start();
     }
 
     render() {
