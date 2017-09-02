@@ -7,10 +7,16 @@ export default class SlideView extends Component {
     }
 
     componentDidMount() {
-        Animated.timing(this.state.slideAnim, {
+        Animated.spring(this.state.slideAnim, {
             toValue: 0,
-            duration: 2000,
-            easing: Easing.bounce
+
+            // K dùng chung với tension/friction
+            // bounciness: 50, // Độ nảy, default: 8
+            // speed: 100, // default: 12
+
+            // K dùng chung với bounciness/speed
+            tension: 500, // sức nén, default 40
+            friction: 1 // độ ma sát,  default 7
         }).start();
     }
 
