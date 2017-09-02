@@ -27,7 +27,7 @@ export default class SlideView extends Component {
 
         // Animated.sequence([anim1, anim2, anim3]).start();
         // Animated.parallel([anim1, anim2, anim3]).start();
-        Animated.stagger(1000, [anim1, anim2, anim3]).start();
+        Animated.stagger(1000, [anim1, anim2, anim3]).start(); // mỗi cái cách nhau 1s
     }
 
     render() {
