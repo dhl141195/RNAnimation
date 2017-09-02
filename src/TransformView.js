@@ -3,19 +3,19 @@ import { View, Animated, Easing, Text } from 'react-native';
 
 export default class TransformView extends Component {
     state = {
-        bgcAnim: new Animated.Value(0),
+        bgAnim: new Animated.Value(0),
     }
 
     componentDidMount() {
         const anim1 = Animated.timing(
-            this.state.bgcAnim,
+            this.state.bgAnim,
             {
                 toValue: 1,
                 duration: 1000
             }
         );
         const anim2 = Animated.timing(
-            this.state.bgcAnim,
+            this.state.bgAnim,
             {
                 toValue: 0,
                 duration: 1000
@@ -26,7 +26,7 @@ export default class TransformView extends Component {
     }
 
     render() {
-        const backgroundColor = this.state.bgcAnim.interpolate({
+        const backgroundColor = this.state.bgAnim.interpolate({
             inputRange: [0, 1],
             outputRange: ['blue', 'red']
         });

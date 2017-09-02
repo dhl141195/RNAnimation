@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
-import FadeView from './FadeView';
-import SlideView from './SlideView'
 import TransformView from './TransformView'
 
 export default class App extends Component {
